@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Sales.Orders.Api.Token;
 using Sales.Orders.Application.Extensions;
 using Sales.Orders.Application.Services;
 using Sales.Orders.Domain.Interfaces;
