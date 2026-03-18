@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Sales.Orders.Application.Extensions;
 using Sales.Orders.Application.Services;
 using Sales.Orders.Domain.Interfaces;
+using Sales.Orders.Infrastructure.Data;
 using Sales.Orders.Infrastructure.Extensions;
 using Sales.Orders.Infrastructure.Repositories;
 using System.Text;
@@ -26,6 +28,9 @@ var builder = WebApplication.CreateBuilder(args);
 //        };
 //    });
 
+builder.Services.AddDbContext<OrderDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 
